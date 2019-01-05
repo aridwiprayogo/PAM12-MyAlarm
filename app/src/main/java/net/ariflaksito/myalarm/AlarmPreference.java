@@ -14,24 +14,24 @@ public class AlarmPreference {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor editor;
 
-    public AlarmPreference(Context context){
+    AlarmPreference(Context context){
         mSharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
-    public void setOneTimeDate(String date){
+    void setOneTimeDate(String date){
         editor = mSharedPreferences.edit();
         editor.putString(KEY_ONE_TIME_DATE, date);
-        editor.commit();
+        editor.apply();
     }
 
-    public String getOneTimeDate(){
+    String getOneTimeDate(){
         return mSharedPreferences.getString(KEY_ONE_TIME_DATE, null);
     }
 
-    public void setOneTimeTime(String time){
+    void setOneTimeTime(String time){
         editor = mSharedPreferences.edit();
         editor.putString(KEY_ONE_TIME_TIME, time);
-        editor.commit();
+        editor.apply();
     }
 
     public String getOneTimeTime(){
@@ -42,7 +42,7 @@ public class AlarmPreference {
         editor = mSharedPreferences.edit();
 
         editor.putString(KEY_ONE_TIME_MESSAGE, message);
-        editor.commit();
+        editor.apply();
     }
 
     public String getOneTimeMessage(){
@@ -52,7 +52,7 @@ public class AlarmPreference {
     public void setRepeatingTime(String time){
         editor = mSharedPreferences.edit();
         editor.putString(KEY_REPEATING_TIME, time);
-        editor.commit();
+        editor.apply();
     }
 
     public String getRepeatingTime(){
@@ -62,7 +62,7 @@ public class AlarmPreference {
     public void setRepeatingMessage(String message){
         editor = mSharedPreferences.edit();
         editor.putString(KEY_REPEATING_MESSAGE, message);
-        editor.commit();
+        editor.apply();
     }
 
     public String getRepeatingMessage(){
@@ -72,6 +72,6 @@ public class AlarmPreference {
     public void clear(){
         editor = mSharedPreferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 }
